@@ -1,6 +1,8 @@
 package de.kandddinsky.cqrs
 
-import java.util.Date
+import java.time.LocalDate
+
+import play.api.libs.json.{Format, Json}
 
 /**
   * hello-lagom
@@ -8,5 +10,9 @@ import java.util.Date
 case class ReservationData(accomodation: String,
                            guest: String,
                            host: String,
-                           startingDate: Date,
+                           startingDate: LocalDate,
                            duration: Int)
+
+object ReservationData {
+  implicit val format: Format[ReservationData] = Json.format
+}

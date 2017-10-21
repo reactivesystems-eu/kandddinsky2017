@@ -18,6 +18,13 @@ object ReservationEvent {
     AggregateEventTag[ReservationEvent]
 }
 
+case class ReservationRequested(reservationData: ReservationData)
+    extends ReservationEvent
+
+object ReservationRequested {
+  implicit val format: Format[ReservationRequested] = Json.format
+}
+
 case class ReservationRejected(reservationData: ReservationData)
     extends ReservationEvent
 
@@ -28,11 +35,11 @@ case class ReservationConfirmed(reservationData: ReservationData)
     extends ReservationEvent
 
 object ReservationConfirmed {
-  implicit val format: Format[ReservationRejected] = Json.format
+  implicit val format: Format[ReservationConfirmed] = Json.format
 }
 case class ReservationCancelled(reservationData: ReservationData)
     extends ReservationEvent
 
 object ReservationCancelled {
-  implicit val format: Format[ReservationRejected] = Json.format
+  implicit val format: Format[ReservationCancelled] = Json.format
 }
