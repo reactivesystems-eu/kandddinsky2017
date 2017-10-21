@@ -18,9 +18,7 @@ class ReservationServiceImpl(persistentEntityRegistry: PersistentEntityRegistry)
 
   override def requestReservation(accomodation: String) = ServiceCall {
     reservation =>
-      // Look up the hello-lagom entity for the given ID.
-
-      val ref =
+      val aggregate =
         persistentEntityRegistry.refFor[ReservationAggregate](accomodation)
 
       val reservationData = ReservationData(
@@ -31,7 +29,7 @@ class ReservationServiceImpl(persistentEntityRegistry: PersistentEntityRegistry)
         duration = reservation.duration
       )
       // Ask the entity the Hello command.
-      ref.ask(RequestReservation(reservationData))
+      aggregate.ask(RequestReservation(reservationData))
   }
 
 }
