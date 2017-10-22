@@ -42,6 +42,8 @@ abstract class HellolagomApplication(context: LagomApplicationContext)
 
   // Register the hello-lagom persistent entity
   persistentEntityRegistry.register(wire[ReservationAggregate])
+  readSide.register[ReservationEvent](wire[ReservationProjector])
+
 }
 
 object ReservationServiceSerializerRegistry extends JsonSerializerRegistry {

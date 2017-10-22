@@ -5,9 +5,14 @@ import java.time.LocalDate
 import com.lightbend.lagom.scaladsl.api.ServiceCall
 import com.lightbend.lagom.scaladsl.api.broker.Topic
 import com.lightbend.lagom.scaladsl.broker.TopicProducer
+import com.lightbend.lagom.scaladsl.persistence.cassandra.{
+  CassandraReadSide,
+  CassandraSession
+}
 import com.lightbend.lagom.scaladsl.persistence.{
   EventStreamElement,
-  PersistentEntityRegistry
+  PersistentEntityRegistry,
+  ReadSide
 }
 
 /**

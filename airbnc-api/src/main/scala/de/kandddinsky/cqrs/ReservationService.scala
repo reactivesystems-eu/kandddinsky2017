@@ -6,6 +6,7 @@ import com.lightbend.lagom.scaladsl.api.broker.kafka.{
   KafkaProperties,
   PartitionKeyStrategy
 }
+import com.lightbend.lagom.scaladsl.api.transport.Method
 import com.lightbend.lagom.scaladsl.api.{Service, ServiceCall}
 import play.api.libs.json.{Format, Json}
 
@@ -28,7 +29,7 @@ trait ReservationService extends Service {
     // @formatter:off
     named("airbnc")
       .withCalls(
-        pathCall("/api/requestReservation/:accomodation", requestReservation _)
+        restCall(Method.POST, "/api/accomodation/:accomodation/reservation", requestReservation _)
       )
       .withAutoAcl(true)
     // @formatter:on

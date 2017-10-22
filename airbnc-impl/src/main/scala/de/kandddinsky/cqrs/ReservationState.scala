@@ -1,8 +1,5 @@
 package de.kandddinsky.cqrs
 
-import java.time.LocalDate
-
-import play.api.libs.functional.syntax._
 import play.api.libs.json._
 
 /**
