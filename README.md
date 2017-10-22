@@ -1,6 +1,6 @@
 # KanDDDinsky CQRS workshop
 
-This is a repository with code created during the [CRRS Workshop](http://kandddinsky.de/14.html) on [KanDDDinsky 2017](http://www.kandddinsky.de) and is only useful to the participants of the workshop, to continue to explore CQRS with [Lagom](http://www.lagomframework.com)
+This is a repository with code created during the [CQRS Workshop](http://kandddinsky.de/14.html) on [KanDDDinsky 2017](http://www.kandddinsky.de) and is only useful to the participants of the workshop, to continue to explore CQRS with [Lagom](http://www.lagomframework.com)
 
 Example for how to create a reservation with [httpie](https://httpie.org/):
 
