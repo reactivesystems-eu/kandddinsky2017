@@ -49,7 +49,7 @@ class ReservationProjector(
   private def createTable(): Future[Done] =
     session.executeCreateTable(
       "CREATE TABLE IF NOT EXISTS hostreservations ( " +
-        "host TEXT, accomodation TEXT, guest TEXT, startingDate TEXT, duration INT, PRIMARY KEY (host, startingDate, guest))")
+        "host TEXT, accomodation TEXT, guest TEXT, startingDate TEXT, duration INT, PRIMARY KEY (host, accomodation, startingDate, guest))")
 
   private val writePromise = Promise[PreparedStatement] // initialized in prepare
   private def writeHostReservation: Future[PreparedStatement] =

@@ -1,9 +1,6 @@
 package de.kandddinsky.cqrs
 
-import com.lightbend.lagom.scaladsl.persistence.{
-  AggregateEvent,
-  AggregateEventTag
-}
+import com.lightbend.lagom.scaladsl.persistence.{AggregateEvent, AggregateEventTag}
 import play.api.libs.json.{Format, Json}
 
 /**
@@ -19,26 +16,28 @@ object ReservationEvent {
 }
 
 case class ReservationRequested(reservationData: ReservationData)
-    extends ReservationEvent
+  extends ReservationEvent
 
 object ReservationRequested {
   implicit val format: Format[ReservationRequested] = Json.format
 }
 
 case class ReservationRejected(reservationData: ReservationData)
-    extends ReservationEvent
+  extends ReservationEvent
 
 object ReservationRejected {
   implicit val format: Format[ReservationRejected] = Json.format
 }
+
 case class ReservationConfirmed(reservationData: ReservationData)
-    extends ReservationEvent
+  extends ReservationEvent
 
 object ReservationConfirmed {
   implicit val format: Format[ReservationConfirmed] = Json.format
 }
+
 case class ReservationCancelled(reservationData: ReservationData)
-    extends ReservationEvent
+  extends ReservationEvent
 
 object ReservationCancelled {
   implicit val format: Format[ReservationCancelled] = Json.format

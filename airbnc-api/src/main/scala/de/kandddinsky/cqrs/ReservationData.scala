@@ -2,7 +2,8 @@ package de.kandddinsky.cqrs
 
 import java.time.LocalDate
 
-import play.api.libs.json.{Format, Json}
+import play.api.libs.json.Json.JsValueWrapper
+import play.api.libs.json._
 
 /**
   * hello-lagom

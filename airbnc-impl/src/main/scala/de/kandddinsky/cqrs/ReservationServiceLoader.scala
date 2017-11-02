@@ -16,23 +16,25 @@ import play.api.libs.ws.ahc.AhcWSComponents
 class ReservationServiceLoader extends LagomApplicationLoader {
 
   override def load(context: LagomApplicationContext): LagomApplication =
-    new HellolagomApplication(context) {
+    new AirbncApplication(context) {
       override def serviceLocator: ServiceLocator = NoServiceLocator
     }
 
   override def loadDevMode(context: LagomApplicationContext): LagomApplication =
-    new HellolagomApplication(context) with LagomDevModeComponents
+    new AirbncApplication(context) with LagomDevModeComponents
 
   override def describeService = Some(readDescriptor[ReservationService])
 }
 
-abstract class HellolagomApplication(context: LagomApplicationContext)
+abstract class AirbncApplication(context: LagomApplicationContext)
     extends LagomApplication(context)
     with CassandraPersistenceComponents
     with LagomKafkaComponents
     with AhcWSComponents {
 
   // Bind the service that this server provides
+  lazy val repository = wire[ReservationRepository]
+
   override lazy val lagomServer =
     serverFor[ReservationService](wire[ReservationServiceImpl])
 
