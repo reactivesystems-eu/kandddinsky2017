@@ -40,13 +40,33 @@ class ReservationServiceImpl(persistentEntityRegistry: PersistentEntityRegistry,
 
   def convertEvent(event: ReservationEvent): ReservationNotification =
     event match {
-      case ReservationRequested(reservation) =>
-        ReservationRequestedNotification(reservation)
-      case ReservationConfirmed(reservation) =>
-        ReservationConfirmedNotification(reservation)
-      case ReservationRejected(reservation) =>
-        ReservationRejectedNotification(reservation)
-      case ReservationCancelled(reservation) =>
-        ReservationCancelledNotification(reservation)
+      case ReservationRequested(reservationData) =>
+        ReservationRequestedNotification(
+          Reservation(reservationData.accomodation,
+                      reservationData.guest,
+                      reservationData.host,
+                      reservationData.startingDate,
+                      reservationData.duration))
+      case ReservationConfirmed(reservationData) =>
+        ReservationConfirmedNotification(
+          Reservation(reservationData.accomodation,
+                      reservationData.guest,
+                      reservationData.host,
+                      reservationData.startingDate,
+                      reservationData.duration))
+      case ReservationRejected(reservationData) =>
+        ReservationRejectedNotification(
+          Reservation(reservationData.accomodation,
+                      reservationData.guest,
+                      reservationData.host,
+                      reservationData.startingDate,
+                      reservationData.duration))
+      case ReservationCancelled(reservationData) =>
+        ReservationCancelledNotification(
+          Reservation(reservationData.accomodation,
+                      reservationData.guest,
+                      reservationData.host,
+                      reservationData.startingDate,
+                      reservationData.duration))
     }
 }
